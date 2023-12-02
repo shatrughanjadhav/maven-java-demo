@@ -1,0 +1,15 @@
+version: 0.2
+
+phases:
+  install:
+    runtime-versions:
+      java: corretto8
+  post_build:
+    commands:
+      - mvn clean compile
+      - mvn package
+      - mv target/0.0.1-SNAPSHOT.war 0.0.1-SNAPSHOT.war
+artifacts:
+  files:
+    - 0.0.1-SNAPSHOT.war
+    - .ebextensions/**/*
