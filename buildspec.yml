@@ -4,11 +4,14 @@ phases:
   install:
     runtime-versions:
       java: corretto8
+       build:
+         command:
+          - echo build entered in phase
+          - mvn package
   post_build:
     commands:
-      - mvn clean compile
-      - mvn package
-      - mv target/0.0.1-SNAPSHOT.war 0.0.1-SNAPSHOT.war
+      - echo Build generated successfully.
+      - mv target/0.0.1-SNAPSHOT.war tomcat/webapps/0.0.1-SNAPSHOT.war
 artifacts:
   files:
     - 0.0.1-SNAPSHOT.war
